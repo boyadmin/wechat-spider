@@ -1,5 +1,5 @@
 # 微信爬虫
-一个爬取微信公众号文章的爬虫。 
+一个爬取微信公众号文章的爬虫。
 
 # 微信爬虫的由来
 零分贝是一家帮助中国5000万贫困人口与社会公益组织对接的公司。
@@ -8,7 +8,7 @@
 
 为了帮助这部分贫困户对接公益机构，我写了这个微信爬虫，从微信公众号发布的文章中上找出最新的公益项目。
 
-这种找项目的方式的可行性，我们还在试验中。 
+这种找项目的方式的可行性，我们还在试验中。
 
 起初，为了快速上线，本爬虫的代码是基于我的另一个 [通用爬虫项目](https://github.com/yijingping/unicrawler) 开发的，我也希望任何对本项目感兴趣的人联系我，与我一同改进这个项目。
 
@@ -61,7 +61,7 @@ yum install libxslt-devel libxml2-devel
 安装浏览器环境 selenium依赖.(如果是mac环境，仅需安装firefox， 但确保版本是 firefox 36.0，使用最新的版本会报错)
 ```
 yum install xorg-x11-server-Xvfb
-yum upgrade glib2 # 确保glib2版本大于2.42.2，否则firefox启动会报错 
+yum upgrade glib2 # 确保glib2版本大于2.42.2，否则firefox启动会报错
 yum install firefox # centos下安装最新的firefox版本
 ```
 
@@ -80,7 +80,7 @@ $ pip install -r requirements.txt
 mysql> CREATE DATABASE `wechatspider` CHARACTER SET utf8;
 ```
 
-4) 安装和运行Redis 
+4) 安装和运行Redis
 
 ```shell
 $ wget http://download.redis.io/releases/redis-2.8.3.tar.gz
@@ -91,7 +91,26 @@ $ make install
 $ redis-server
 ```
 
-5) 更新配置文件local_settings 
+附加：安装和运行Redis
+```shell
+$ wget http://download.redis.io/releases/redis-stable.tar.gz
+$ tar -xvf redis-stable.tar.gz
+$ cd redis-stable/
+$ make
+$ make install
+$ ./utils/install_server.sh
+```
+
+附加：Redis服务查看、开启、关闭
+```shell
+ps -ef|grep redis
+/etc/init.d/redis_6379 start
+/etc/init.d/redis_6379 stop
+service redis_6379 start
+service redis_6379 stop
+```
+
+5) 更新配置文件local_settings
 
 在 wechatspider 目录下,添加 `local_settings.py` 文件,配置如下:
 ```
@@ -146,7 +165,7 @@ $ python manage.py migrate
 ```
 python manage.py runserver 0.0.0.0:8001
 ```
-访问 http://localhost:8001/。 
+访问 http://localhost:8001/。
 
 
 6) 创建超级管理员账号,访问后台，并配置要爬取的公众号和关键字
@@ -179,4 +198,3 @@ $ python bin/processor.py
 
 
 # API接口文档
-
